@@ -142,17 +142,17 @@ describe('UserController', () => {
 
     describe('User update', () => {
       it('should update an user', async () => {
-        const response = await controller.update('1', user);
+        const response = await controller.update('1', user, {});
         expect(response.data).toEqual(user);
         expect(spyService.update).toHaveBeenCalledWith(1, user);
       });
       it('should throw error when no id is supplied', async () => {
-        const response = await controller.update(null, user);
+        const response = await controller.update(null, user, {});
         expect(response.status).toBe(400);
         expect(response.message).toBe('User id is required');
       });
       it('should throw error when no payload is supplied', async () => {
-        const response = await controller.update('1', null);
+        const response = await controller.update('1', null, {});
         expect(response.status).toBe(400);
         expect(response.message).toBe('User information is required');
       });
